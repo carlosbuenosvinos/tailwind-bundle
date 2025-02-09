@@ -77,7 +77,6 @@ class TailwindBuilder
         $process = $binary->createProcess($arguments);
         if (strpos($process->getCommandLine(), '/tailwind/v4') !== false) {
             $arguments = array_slice($arguments, 2);
-            array_unshift($arguments, 'build');
             $process = $binary->createProcess($arguments);
         }
 
