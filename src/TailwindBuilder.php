@@ -75,6 +75,11 @@ class TailwindBuilder
             $arguments[] = $postCssConfigPath;
         }
         $process = $binary->createProcess($arguments);
+        if (strpos($process->getCommandLine(), '/tailwind/v4') !== false) {
+            $arguments = array_slice($arguments, 2);
+            $process = $binary->createProcess($arguments);
+        }
+
         if ($watch) {
             $process->setTimeout(null);
             // setting an input stream causes the command to "wait" for the watch
